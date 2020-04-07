@@ -32,17 +32,17 @@ class CountryData extends Component {
         return (
             <div className="container">
                 <h3 align="right">
-                    {new Date(this.state.updated).toLocaleString()}
+                    Lastupdated : {new Date(this.state.updated).toLocaleString()}
                 </h3>
                 <TableContainer component={Paper}>
-                    <Table aria-label="simple table">
+                    <Table aria-label="simple table" >
                         <TableHead bgcolor="palette.common.black" color="primary.contrastText">
                             <TableRow>
-                                <TableCell><strong>Country Name</strong></TableCell>
-                                <TableCell align="right"><strong>Confirmed</strong></TableCell>
-                                <TableCell align="right"><strong>Active</strong></TableCell>
-                                <TableCell align="right"><strong>Recovered</strong></TableCell>
-                                <TableCell align="right"><strong>Decreased</strong></TableCell>
+                                <TableCell><h2><strong>Country Name</strong></h2></TableCell>
+                                <TableCell align="left"><h2><strong>Confirmed</strong></h2></TableCell>
+                                <TableCell align="left"><h2><strong>Active</strong></h2></TableCell>
+                                <TableCell align="left"><h2><strong>Recovered</strong></h2></TableCell>
+                                <TableCell align="left"><h2><strong>Decreased</strong></h2></TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -52,10 +52,10 @@ class CountryData extends Component {
                                         <TableCell component="th" scope="row">
                                             {country.country}
                                         </TableCell>
-                                        <TableCell align="right">{country.cases}</TableCell>
-                                        <TableCell align="right">{country.active}</TableCell>
-                                        <TableCell align="right">{country.recovered}</TableCell>
-                                        <TableCell align="right">{country.deaths}</TableCell>
+                                        <TableCell align="left">{country.cases}</TableCell>
+                                        <TableCell align="left">{country.active}</TableCell>
+                                        <TableCell align="left">{country.recovered}</TableCell>
+                                        <TableCell align="left">{country.deaths}</TableCell>
                                     </TableRow>
                                 )
                             })}

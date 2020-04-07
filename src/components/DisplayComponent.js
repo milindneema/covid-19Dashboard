@@ -15,13 +15,12 @@ class DisplayData extends Component {
 
     async componentDidMount() {
 
-        const response = await fetch('https://covid19.mathdro.id/api');
+        const response = await fetch('https://corona.lmao.ninja/all');
         const data = await response.json();
         this.setState({ data: data, loading: false })
     }
 
     worldData = () => {
-        const active = this.state.data.confirmed.value - this.state.data.deaths.value - this.state.data.recovered.value
         return (
             <div >
                 <Grid container >
@@ -29,33 +28,33 @@ class DisplayData extends Component {
                         <h1 align="left">WORLD</h1>
                     </Grid>
                     <Grid item xs={12} sm={6} md={4}>
-                        <h4 align="right col-4">LastUpdate : {this.state.data.lastUpdate}</h4>
+                        <h4 align="right col-4">LastUpdate : {new Date(this.state.data.updated).toLocaleString()}</h4>
                     </Grid>
                 </Grid>
 
                 <Grid container spacing={2}>
-                    <Grid item xs={12} sm={6} md={3}>
+                    <Grid item xs={6} sm={6} md={3}>
                         <Box align="center" bgcolor="primary.main" color="primary.contrastText" borderRadius="10%" p={2}>
                             <h2><strong>Confirmed</strong></h2>
-                            <h4>{this.state.data.confirmed.value}</h4>
+                            <h4>{this.state.data.cases}</h4>
                         </Box>
                     </Grid>
-                    <Grid item xs={12} sm={6} md={3}>
+                    <Grid item xs={6} sm={6} md={3}>
                         <Box align="center" bgcolor="warning.main" color="warning.contrastText" borderRadius="10%" p={2}>
                             <h2><strong>Active</strong></h2>
-                            <h4>{active}</h4>
+                            <h4>{this.state.data.active}</h4>
                         </Box>
                     </Grid>
-                    <Grid item xs={12} sm={6} md={3}>
+                    <Grid item xs={6} sm={6} md={3}>
                         <Box align="center" bgcolor="success.main" color="success.contrastText" borderRadius="10%" p={2}>
                             <h2><strong>Recovered</strong></h2>
-                            <h4>{this.state.data.recovered.value}</h4>
+                            <h4>{this.state.data.recovered}</h4>
                         </Box>
                     </Grid>
-                    <Grid item xs={12} sm={6} md={3}>
+                    <Grid item xs={6} sm={6} md={3}>
                         <Box align="center" bgcolor="error.main" color="error.contrastText" borderRadius="10%" p={2}>
                             <h2><strong>Decreased</strong></h2>
-                            <h4>{this.state.data.deaths.value}</h4>
+                            <h4>{this.state.data.deaths}</h4>
                         </Box>
                     </Grid>
                 </Grid>
