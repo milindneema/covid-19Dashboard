@@ -3,7 +3,7 @@ import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 
-class DisplayData extends Component {
+class Country extends Component {
     constructor(props) {
         super(props);
 
@@ -15,44 +15,45 @@ class DisplayData extends Component {
 
     async componentDidMount() {
 
-        const response = await fetch('https://corona.lmao.ninja/all');
-        const data = await response.json();
-        this.setState({ data: data, loading: false })
+        this.props.data.map((country) => {
+            if (country.country === "India") {
+                this.setState({ data: country, loading: false });
+            }
+        });
     }
 
-    worldData = () => {
+
+
+    IndiaData = () => {
         return (
             <div >
                 <Grid container >
-                    <Grid item xs={6}>
-                        <h1 align="left">WORLD</h1>
-                    </Grid>
-                    <Grid item xs={6} sm={6} md={4}>
-                        <h3 align="right col-4">LastUpdate : {new Date(this.state.data.updated).toLocaleString()}</h3>
+                    <Grid item xs={6} sm={6} md={8}>
+                        <h1 align="left">India</h1>
                     </Grid>
                 </Grid>
 
-                <Grid container spacing={2} ml={4} mr={4}>
+                <Grid container spacing={2}>
                     <Grid item xs={6} sm={6} md={3}>
-                        <Box boxShadow={15} height="75%" align="center" bgcolor="primary.main" color="primary.contrastText" borderRadius="10%" p={2} >
+                        <Box boxShadow={15} align="center" bgcolor="primary.main" color="primary.contrastText" borderRadius="10%" p={2}>
                             <h2><strong>Confirmed</strong></h2>
-                            <h4 >{this.state.data.cases}</h4>
+                            <h4>{this.state.data.cases}</h4>
                         </Box>
                     </Grid>
                     <Grid item xs={6} sm={6} md={3}>
-                        <Box boxShadow={15} height="75%" align="center" bgcolor="warning.main" color="warning.contrastText" borderRadius="10%" p={2}>
+                        <Box boxShadow={15} align="center" bgcolor="warning.main" color="warning.contrastText" borderRadius="10%" p={2}>
                             <h2><strong>Active</strong></h2>
                             <h4>{this.state.data.active}</h4>
                         </Box>
                     </Grid>
                     <Grid item xs={6} sm={6} md={3}>
-                        <Box boxShadow={15} height="75%" align="center" bgcolor="success.main" color="success.contrastText" borderRadius="10%" p={2}>
+                        <Box boxShadow={15} align="center" bgcolor="success.main" color="success.contrastText" borderRadius="10%" p={2}>
                             <h2><strong>Recovered</strong></h2>
                             <h4>{this.state.data.recovered}</h4>
                         </Box>
                     </Grid>
                     <Grid item xs={6} sm={6} md={3}>
-                        <Box boxShadow={15} height="75%" align="center" bgcolor="error.main" color="error.contrastText" borderRadius="10%" p={2}>
+                        <Box boxShadow={15} align="center" bgcolor="error.main" color="error.contrastText" borderRadius="10%" p={2}>
                             <h2><strong>Decreased</strong></h2>
                             <h4>{this.state.data.deaths}</h4>
                         </Box>
@@ -66,11 +67,11 @@ class DisplayData extends Component {
         return (
             <div>
                 {this.state.loading ? <div><p>Loading...</p></div> : <Container fixed>
-                    {this.worldData()}
+                    {this.IndiaData()}
                 </Container>}
             </div>
         )
     }
 
 }
-export default DisplayData;
+export default Country;

@@ -6,7 +6,6 @@ import CountryData from './components/CountryComponent'
 function App() {
   return (
     <div>
-      <h1 align="center">This is Data from JHU</h1>
       <DisplayData />
       <CountryData />
     </div>

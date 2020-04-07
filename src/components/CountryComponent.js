@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Country from './IndiaComponent';
 import Container from '@material-ui/core/Container';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -7,6 +8,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+
 
 class CountryData extends Component {
     constructor(props) {
@@ -23,17 +25,16 @@ class CountryData extends Component {
 
         const response = await fetch('https://corona.lmao.ninja/countries');
         const countries = await response.json();
+        console.log(countries)
         this.setState({ CountryData: countries, updated: countries[0].updated, loading: false })
     }
 
 
     countryData = () => {
+
         // const active = this.state.indiaData.confirmed.value - this.state.indiaData.deaths.value - this.state.indiaData.recovered.value
         return (
             <div className="container">
-                <h3 align="right">
-                    Lastupdated : {new Date(this.state.updated).toLocaleString()}
-                </h3>
                 <TableContainer component={Paper}>
                     <Table aria-label="simple table" >
                         <TableHead bgcolor="palette.common.black" color="primary.contrastText">
@@ -69,6 +70,8 @@ class CountryData extends Component {
         return (
             <div>
                 {this.state.loading ? <div><p>Loading...</p></div> : <Container fixed>
+                    <Country data={this.state.CountryData} />
+                    <br />
                     {this.countryData()}
                 </Container>}
             </div>
