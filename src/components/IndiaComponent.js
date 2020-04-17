@@ -37,7 +37,7 @@ class Country extends Component {
                     <Grid item xs={6} sm={6} md={3}>
                         <Box boxShadow={15} align="center" bgcolor="primary.main" color="primary.contrastText" borderRadius="10%" p={2}>
                             <h2><strong>Confirmed</strong></h2>
-                            <h4>{this.state.data.cases}</h4>
+                            <h4>{this.state.data.cases} <span>&nbsp;&nbsp;&nbsp;&nbsp;+{this.state.data.todayCases}</span></h4>
                         </Box>
                     </Grid>
                     <Grid item xs={6} sm={6} md={3}>
@@ -55,7 +55,7 @@ class Country extends Component {
                     <Grid item xs={6} sm={6} md={3}>
                         <Box boxShadow={15} align="center" bgcolor="error.main" color="error.contrastText" borderRadius="10%" p={2}>
                             <h2><strong>Decreased</strong></h2>
-                            <h4>{this.state.data.deaths}</h4>
+                            <h4>{this.state.data.deaths} <span>&nbsp;&nbsp;&nbsp;&nbsp;+{this.state.data.todayDeaths}</span></h4>
                         </Box>
                     </Grid>
                 </Grid>

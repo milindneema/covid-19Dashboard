@@ -23,16 +23,13 @@ class CountryData extends Component {
 
     async componentDidMount() {
 
-        const response = await fetch('https://corona.lmao.ninja/countries');
+        const response = await fetch('https://corona.lmao.ninja/v2/countries');
         const countries = await response.json();
-        console.log(countries)
         this.setState({ CountryData: countries, updated: countries[0].updated, loading: false })
     }
 
 
     countryData = () => {
-
-        // const active = this.state.indiaData.confirmed.value - this.state.indiaData.deaths.value - this.state.indiaData.recovered.value
         return (
             <div className="container">
                 <TableContainer component={Paper}>
@@ -53,10 +50,10 @@ class CountryData extends Component {
                                         <TableCell component="th" scope="row">
                                             {country.country}
                                         </TableCell>
-                                        <TableCell align="left">{country.cases}</TableCell>
-                                        <TableCell align="left">{country.active}</TableCell>
-                                        <TableCell align="left">{country.recovered}</TableCell>
-                                        <TableCell align="left">{country.deaths}</TableCell>
+                                        <TableCell ><span>{country.cases}</span><span>&nbsp;&nbsp;&nbsp;&nbsp;+{country.todayCases}</span></TableCell>
+                                        <TableCell justifycontent="left">{country.active}</TableCell>
+                                        <TableCell justifycontent="left">{country.recovered}</TableCell>
+                                        <TableCell justifycontent="left">{country.deaths}<span>&nbsp;&nbsp;&nbsp;&nbsp;+{country.todayDeaths}</span></TableCell>
                                     </TableRow>
                                 )
                             })}
